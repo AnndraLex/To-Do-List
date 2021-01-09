@@ -19,6 +19,24 @@ body {
 	color: #666;
 	margin: 5px 0;
 }
+.todo-wrapper input {
+	padding: 3px 6px;
+}
+.todo-wrapper form {
+	display:inline-block;
+}
+.control-wrapper {
+	display: flex;
+	text-align: center;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+/*
+  ==========================================
+  List
+  ==========================================
+*/
 .todo-wrapper ol {
 	margin: 20px 0;
 }
@@ -38,6 +56,11 @@ body {
 	text-decoration: line-through;
 	color: #666;
 }
+/* 
+  ==========================================
+  Buttons
+  ==========================================
+*/
 .todo-wrapper .pretty-button {
 	margin: 10px 2px;
 	padding: 5px 20px;
@@ -53,18 +76,6 @@ body {
 	cursor:pointer;
 	opacity: 0.75;
 }
-.todo-wrapper input {
-	padding: 3px 6px;
-}
-.todo-wrapper form {
-	display:inline-block;
-}
-.control-wrapper {
-	display: flex;
-	text-align: center;
-	flex-wrap: wrap;
-	justify-content: space-around;
-}
 .todo-wrapper #clear-button {
 	background-color: #49B749;
 }
@@ -74,12 +85,13 @@ body {
 .todo-wrapper #save-button {
 	background-color: #49B749;
 }
+
 @media only screen and (min-width: 1400px) {
 	.todo-wrapper {
 		width:50%;
 	}
 	.todo-wrapper input {
-		widht: 600px;
+		width: 600px;
 	}
 }
 @media only screen and (max-width: 1399px) and (min-width: 750px){

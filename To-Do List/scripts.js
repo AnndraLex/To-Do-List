@@ -1,5 +1,11 @@
 var toDoEntryBox = document.getElementById("todo-entry-box");
 var toDoList = document.getElementById("todo-list");
+var addButton = document.getElementById("add-button");
+var clearButton = document.getElementById("clear-completed-button");
+var emptyButton = document.getElementById("empty-button");
+var saveButton = document.getElementById("save-button");
+var loadButton = document.getElementById("load-button");
+
 function newToDoItem(itemText, completed) {
     var toDoItem = document.createElement("li");
     var toDoText = document.createTextNode(itemText);
@@ -21,14 +27,13 @@ function toggleToDoItemState(){
 		this.classList.add("completed");
 	}
 }
-var addButton = document.getElementById("add-button");
-addButton.addEventListener("click", addToDoItem);
+
 function addToDoItem() {
     var itemText = toDoEntryBox.value;
     newToDoItem(itemText, false);
 }
-var clearButton = document.getElementById("clear-completed-button");
-clearButton.addEventListener("click", clearCompletedToDoItems);
+
+
 function clearCompletedToDoItems() {
     var completedItems = toDoList.getElementsByClassName("completed");
 
@@ -36,16 +41,16 @@ function clearCompletedToDoItems() {
         completedItems.item(0).remove();
     }
 }
-var emptyButton = document.getElementById("empty-button");
-emptyButton.addEventListener("click", emptyList);
+
+
 function emptyList(){
 	var toDoItems = toDoList.children;
 	while (toDoItems.length > 0) {
 		toDoItems.item(0).remove();
 	}
 }
-var saveButton = document.getElementById("save-button");
-saveButton.addEventListener("click", saveList);
+
+
 function saveList() {
     var toDos = [];
 
@@ -63,3 +68,18 @@ function saveList() {
 
     localStorage.setItem("toDos", JSON.stringify(toDos));
 }
+function loadList() {
+	if (localStorage.getItem("toDos") !== null) {
+		var toDos = JSON.parse(localStorage.getItem("toDos"));
+		for (var i = 0; i < toDos.length; i++) {
+			var toDo = toDos[i];
+			newToDoItem(toDo.task, toDo.completed);
+		}
+	}
+}
+
+addButton.addEventListener("click", addToDoItem);
+clearButton.addEventListener("click", clearCompletedToDoItems);
+emptyButton.addEventListener("click", emptyList);
+saveButton.addEventListener("click", saveList);
+loadButton.addEventListener("click", loadList);
